@@ -1,5 +1,6 @@
 package ru.iu3.fclient;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +28,9 @@ public class PinpadActivity extends AppCompatActivity {
         ShuffleKeys();
 
         findViewById(R.id.btnOK).setOnClickListener((View) -> {
+            Intent it = new Intent();
+            it.putExtra("pin", pin);
+            setResult(RESULT_OK, it);
             finish();
         });
 
