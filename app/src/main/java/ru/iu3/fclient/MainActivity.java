@@ -2,6 +2,7 @@ package ru.iu3.fclient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -64,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButtonClick(View v)
     {
-        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+        Intent it = new Intent(this, PinpadActivity.class);
+        startActivity(it);
     }
 
     /**
