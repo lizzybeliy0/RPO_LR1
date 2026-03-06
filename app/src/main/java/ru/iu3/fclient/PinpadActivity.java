@@ -94,7 +94,7 @@ public class PinpadActivity extends AppCompatActivity {
         byte[] rnd = MainActivity.randomBytes(MAX_KEYS);
         for(int i = 0; i < MAX_KEYS; i++)
         {
-            int idx = (rnd[i] & 0xFF) % 10;
+            int idx = (rnd[i] & 0xFF) % 10; //случайн индекс 0-9
             CharSequence txt = keys[idx].getText();
             keys[idx].setText(keys[i].getText());
             keys[i].setText(txt);

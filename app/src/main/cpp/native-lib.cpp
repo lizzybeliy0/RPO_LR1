@@ -198,12 +198,13 @@ Java_ru_iu3_fclient_MainActivity_transaction(JNIEnv *xenv, jobject xthiz, jbyteA
             return false;
         char buf[13];
         for (int i = 0; i < 6; i++) {
-            uint8_t n = *(p + 3 + i); // начинаем с числа = сумма
+            uint8_t n = *(p + 3 + i); // начинаем с числа = начало суммы
             buf[i*2] = ((n & 0xF0) >> 4) + '0';
             buf[i*2 + 1] = (n & 0x0F) + '0';
         }
         buf[12] = 0x00;
         jstring jamount = (jstring) env->NewStringUTF(buf);
+
         int ptc = 3;
         while (ptc > 0) {
 

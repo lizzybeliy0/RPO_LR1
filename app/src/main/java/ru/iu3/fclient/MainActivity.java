@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements TransactionEvents
         it.putExtra("ptc", ptc);
         it.putExtra("amount", amount);
         synchronized (MainActivity.this) {
-            activityResultLauncher.launch(it);
+            activityResultLauncher.launch(it); // запуск PinpadActivity
             try {
                 MainActivity.this.wait();
             } catch (Exception ex) {
