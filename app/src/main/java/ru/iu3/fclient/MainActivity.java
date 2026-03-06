@@ -92,6 +92,13 @@ public class MainActivity extends AppCompatActivity implements TransactionEvents
         return pin;
     }
 
+    @Override
+    public void transactionResult(boolean result) {
+        runOnUiThread(()-> {
+            Toast.makeText(MainActivity.this, result ? "ok" : "failed", Toast.LENGTH_SHORT).show();
+        });
+    }
+
     public static byte[] stringToHex(String s)
     {
         byte[] hex;
@@ -108,17 +115,8 @@ public class MainActivity extends AppCompatActivity implements TransactionEvents
 
     public void onButtonClick(View v)
     {
-        new Thread(()-> {
-            try {
-                byte[] trd = stringToHex("9F0206000000000100");
-                boolean ok = transaction(trd);
-                runOnUiThread(()-> {
-                    Toast.makeText(MainActivity.this, ok ? "ok" : "failed", Toast.LENGTH_SHORT).show();
-                });
-            } catch (Exception ex) {
-                // todo: log error
-            }
-        }).start();
+        byte[] trd = stringToHex("9F0206000000000100");
+        transaction(trd);
     }
 
     /**
